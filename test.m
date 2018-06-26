@@ -1,7 +1,8 @@
+addpath(genpath('../common'));
+addpath(genpath('../matlab_utils'));
 clear;
 % clc;
 close all;
-addpath(genpath('../common'));
 
 fs0 = 12e3;
 T = 0.1;
