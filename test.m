@@ -6,7 +6,14 @@ close all;
 
 fs0 = 12e3;
 T = 0.1;
-data = RandomBandLimitedSignal(fs0, T, 20, 300, 3600, 4000, 60, 1, 60, 'uniform');
+[data, hFilter] = RandomBandLimitedSignal(fs0, T, 20, 300, 3600, 4000, 60, 1, 60, 'uniform');
+freqs = 0 : fs0/2-1;
+h = freqz(hFilter, length(freqs));
+plot(freqs, mag2db(abs(h))); set(gcf, 'color', 'w');
+grid on;
+xlabel('f, Hz');
+ylabel('|H(f)|, dB');
+return;
 fs = 200e3;
 factor = fs / fs0;
 [p, q] = rat(factor);
