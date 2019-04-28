@@ -13,7 +13,7 @@ plot(freqs, mag2db(abs(h))); set(gcf, 'color', 'w');
 grid on;
 xlabel('f, Hz');
 ylabel('|H(f)|, dB');
-return;
+% return;
 fs = 200e3;
 factor = fs / fs0;
 [p, q] = rat(factor);
@@ -148,8 +148,10 @@ thresholds
 
 % kfEth = KeyFeatures(envel, thresholds.ampl);
 % envel = awgn(envel, snr);
+tic
 kf = KeyFeatures(envel, thresholds.ampl)
 dmra1 = DMRA1(kf, thresholds);
+toc
 fprintf("dmra1 = " + dmra1 + "\n");
 % [decision, meanRat] = CheckDecision(dmra1, kf, kfEth);
 
